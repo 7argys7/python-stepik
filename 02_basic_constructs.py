@@ -71,12 +71,16 @@ print("".join(digit))
 #  --- Задача 8: Задача Иосифа Флавия ---
 n = int(input())
 k = int(input())
-live = []
-
-for i in range(1, n + 1):
-    if i % k == 0:
-        live.append(i)
-print(live)
+live = [i for i in range(1, n + 1)]
+new_live = []
+while len(live) != 1:
+    idx = (k - 1) % len(live)
+    new_live += live[:idx]
+    del live[:idx + 1]
+    live += new_live
+    new_live = []
+    
+print(*live)
     
 
 
