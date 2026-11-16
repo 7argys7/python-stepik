@@ -11,12 +11,12 @@ print(a * b)
 print(a / b)
 print(a // b)
 print(a % b)
-print((a ** 10 + b ** 10) ** 0.5)
+print((a**10 + b**10) ** 0.5)
 
 #  --- Задача 2: Индекс массы тела  ---
 mass = float(input())
 height = float(input())
-IMT = mass / (height ** 2)
+IMT = mass / (height**2)
 if 18.5 <= IMT <= 25:
     print("Оптимальная масса")
 elif IMT <= 18.5:
@@ -27,7 +27,7 @@ else:
 #  --- Задача 3: Стоимость строки ---
 string = input()
 lenstr = len(string) * 60
-print(f'{lenstr // 100} р. {lenstr % 100} коп.')
+print(f"{lenstr // 100} р. {lenstr % 100} коп.")
 
 #  --- Задача 4: количество слов ---
 string = input().split()
@@ -55,14 +55,14 @@ print(zodiak[year])
 digit = input()
 if len(digit) == 5:
     print(int(digit[::-1]))
-else:    
+else:
     print(int(digit[0] + digit[:0:-1]))
 
 #  --- Задача 7: Stanard American Convention ---
 digit = [i for i in input()]
 digit.reverse()
 cnt = 0
-for i in range(3, len(digit) , 3):
+for i in range(3, len(digit), 3):
     digit.insert(i + cnt, ",")
     cnt += 1
 digit.reverse()
@@ -76,10 +76,10 @@ new_live = []
 while len(live) != 1:
     idx = (k - 1) % len(live)
     new_live += live[:idx]
-    del live[:idx + 1]
+    del live[: idx + 1]
     live += new_live
     new_live = []
-    
+
 print(*live)
 
 
@@ -98,7 +98,7 @@ for i in range(n):
     coord = input().split()
     x = int(coord[0])
     y = int(coord[1])
-    if  x > 0 and y > 0:
+    if x > 0 and y > 0:
         quarter_1 += 1
     elif x < 0 and y > 0:
         quarter_2 += 1
@@ -140,3 +140,97 @@ del n[-1]
 print(*n)
 
 #  --- Задача 5: Различные элементы ---
+n = input().split()
+count = 1
+for i in range(1, len(n)):
+    if int(n[i - 1]) < int(n[i]):
+        count += 1
+print(count)
+
+#  --- Задача 6: Произведение чисел  ---
+n = int(input())
+lis = []
+a = False
+
+for i in range(n):
+    num = int(input())
+    lis.append(num)
+poss = int(input())
+
+for i in range(len(lis)):
+    for j in range(len(lis)):
+        if i == j:
+            continue
+        if lis[i] * lis[j] == poss:
+            a = True
+            break
+
+if a == True:
+    print("ДА")
+else:
+    print("НЕТ")
+
+#  --- Задача 7: Камень, ножницы, бумага  ---
+timur, ruslan = input(), input()
+
+if timur == ruslan:
+    print("ничья")
+elif (
+    timur == "камень"
+    and ruslan == "ножницы"
+    or timur == "ножницы"
+    and ruslan == "бумага"
+    or timur == "бумага"
+    and ruslan == "камень"
+):
+    print("Тимур")
+else:
+    print("Руслан")
+
+#  --- Задача 8: Камень, ножницы, бумага, ящерица, спок ---
+timur, ruslan = input(), input()
+
+game = ["камень", "ящерица", "Спок", "ножницы", "бумага"]
+idx_timur = game.index(timur)
+idx_ruslan = game.index(ruslan)
+if timur == ruslan:
+    print("ничья")
+elif (idx_timur - idx_ruslan) % 2 == 0:
+    if idx_timur > idx_ruslan:
+        print("Тимур")
+    else:
+        print("Руслан")
+else:
+    if idx_timur < idx_ruslan:
+        print("Тимур")
+    else:
+        print("Руслан")
+
+#  --- Задача 9: Орел и решка ---
+n = input()
+new_count = 0
+old_count = 0
+
+for i in n:
+    if i == "Р":
+        old_count += 1
+    if i == "О":
+        old_count = 0
+    if old_count > new_count:
+        new_count = old_count
+print(new_count)
+
+#  --- Задача 10: Кремниевая долина ---
+n = int(input())
+anton = ["a", "n", "t", "o", "n"]
+
+for i in range(1, n + 1):
+    strin = input()
+    count = 0
+    for j in strin:
+        if j == anton[count]:
+            count += 1
+        if count == 5:
+            print(i, end=" ")
+            break
+       
