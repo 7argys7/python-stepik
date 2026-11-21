@@ -1,0 +1,44 @@
+# ============================
+# 4.2 Вложенные списки. Часть 1
+# ============================
+# --- Задача 1: no name --
+list1 = [10, 20, [300, 400, [5000, 6000], 500], 30, 40]
+
+list1[2][2].append(7000)
+
+print(list1)
+
+# --- Задача 2: no name --
+list1 = ['a', 'b', ['c', ['d', 'e', ['f', 'g'], 'k'], 'l'], 'm', 'n']
+sub_list = ['h', 'i', 'j']
+
+list1[2][1][2].extend(sub_list)
+
+print(list1)
+
+# --- Задача 3: no name --
+list1 = [[1, 7, 8], [9, 7, 102], [102, 106, 105], [100, 99, 98, 103], [1, 2, 3]]
+
+for i in list1:
+    i.reverse()
+
+print(list1)
+
+# --- Задача 4: no name --
+result = list1[0]
+for i in range(1, len(list1)):
+    if max(result) > max(list1[i]):
+        continue
+    elif max(result) < max(list1[i]):
+        result = list1[i]
+print(max(result))
+
+# --- Задача 5: no name --
+total = 0
+count = 0
+for i in list1:
+   for j in i:
+       total += j
+       count += 1
+print(total / count)
+
