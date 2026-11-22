@@ -1,4 +1,11 @@
-list1 = [[1, 8, 7, 4], [1, 3, 4, 5, 6], [2, 7, 2], [2, 6, 7, 8]]
-del list1[1]
+def pascal(n):
+    new_list = []
+    old_list = [1]
+    for i in range(n):
+        for j in range(len(old_list) + 1):
+            if
+            new_list.append()
 
-print(list1)
+
+
+n = int(input())
