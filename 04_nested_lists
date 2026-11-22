@@ -58,3 +58,16 @@ for i in range(1, n + 1):
     print(list1)
 
 #--- Задача 3: Треугольник Паскаля 1 ---
+def pascal(n):
+    old_list = [1]
+    for i in range(n):
+        new_list = []
+        for j in range(len(old_list) - 1):
+            sum = int(old_list[j]) + int(old_list[j + 1])
+            new_list.append(sum)
+        old_list = [1] + new_list + [1]
+    return old_list
+
+n = int(input())
+
+print(pascal(n))
