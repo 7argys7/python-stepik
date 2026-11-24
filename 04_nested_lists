@@ -71,3 +71,77 @@ def pascal(n):
 n = int(input())
 
 print(pascal(n))
+
+#--- Задача 4: Треугольник Паскаля 2 ---
+
+def pascal(n):
+    old_list = [1]
+    for i in range(n):
+        new_list = []
+        for j in range(len(old_list) - 1):
+            sum = int(old_list[j]) + int(old_list[j + 1])
+            new_list.append(sum)
+        old_list = [1] + new_list + [1]
+    return old_list
+
+n = int(input())
+for i in range(n):
+    print(*pascal(i))
+
+#--- Задача 5: Упаковка дубликатов ---
+n = input().split()
+list1 = []
+char_list = []
+
+for i in range(len(n)):
+    if len(list1) == 0:
+        list1.append(n[i])
+    else:
+        if list1[-1] == n[i]:
+            list1.append(n[i])
+        else:
+            char_list.append(list1)
+            list1 = []
+            list1.append(n[i])
+if len(list1) != 0:
+    char_list.append(list1)
+
+print(char_list)
+
+#--- Задача 6: Разбиение на чанки ---
+def chunked(sym, num):
+    count = 1
+    gen_list = []
+    list1 = []
+
+    for i in range(len(sym)):
+        list1.append(sym[i])
+        if count == num:
+            gen_list.append(list1)
+            list1 = []
+            count = 0
+        count += 1
+
+    if len(list1) != 0:
+        gen_list.append(list1)
+    return gen_list
+
+
+symbols = input().split()
+n = int(input())
+
+print(chunked(symbols, n))
+
+#--- Задача 7: Подписки списка ---
+n = input().split()
+gen_list = []
+count = 1
+
+for i in range(len(n)):
+    for j in range(len(n) - i):
+        gen_list.append(n[j : j + count])
+    count += 1
+
+gen_list.append([])
+
+print(gen_list)
