@@ -43,7 +43,7 @@ for i in list1:
 print(total / count)
 
 # ============================
-# 4.2 Вложенные списки. Часть 2
+# 4.3 Вложенные списки. Часть 2
 # ============================
 # --- Задача 1: Список по образцу 1 --
 n = int(input())
@@ -145,3 +145,69 @@ for i in range(len(n)):
 gen_list.append([])
 
 print(gen_list)
+
+
+# ============================
+# 4.4 Матрицы. Часть 1
+# ============================
+#--- Задача 1: Вывести матрицу 1 ---
+n, m = int(input()), int(input())
+for i in range(n):
+    for j in range(m):
+        string = input()
+        print(string, end=" ")
+    print()
+
+#--- Задача 2: Вывести матрицу 2 ---    
+n, m = int(input()), int(input())
+matrix = [[input() for _ in range(m)] for _ in range(n)]
+
+for i in matrix:
+    print(*i)
+print()
+for i in range(m):
+    for j in range(n):
+        print(matrix[j][i], end=" ")
+    print()
+
+
+#--- Задача 3: След матрицы --- 
+n = int(input())
+matrix = [input().split() for _ in range(n)]
+count = 0
+
+for i in range(n):
+    count += int(matrix[i][i])
+print(count)
+
+#--- Задача 4: Больше среднего --- 
+def int_list(list):
+    for i in range(len(list)):
+        list[i] = int(list[i])
+
+n = int(input())
+count = 0
+for i in range(n):
+    str1 = input().split()
+    int_list(str1)
+    merge = sum(str1) // (len(str1))
+    for j in str1:
+        if j > merge:
+            count += 1
+    print(count)
+    count = 0
+
+#--- Задача 5: Максимальный в области 1 ---
+n = int(input())
+matrix = []
+list1 = []
+
+for _ in range(n):
+    int_list = [int(i) for i in input().split()]
+    matrix.append(int_list)
+
+for i in range(n):
+    for j in range(n):
+        if i >= j:
+            list1.append(matrix[i][j])
+print(max(list1))
