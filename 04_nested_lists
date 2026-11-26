@@ -211,3 +211,48 @@ for i in range(n):
         if i >= j:
             list1.append(matrix[i][j])
 print(max(list1))
+
+#--- Задача 6: Максимальный в области 2 ---
+n = int(input())
+matrix = []
+list1 = []
+
+for _ in range(n):
+    int_list = [int(i) for i in input().split()]
+    matrix.append(int_list)
+
+for i in range(n):
+    for j in range(n):
+        if i >= j and i <= n - 1 - j or i <= j and i >= n - i -j:
+            list1.append(matrix[i][j])
+print(max(list1))
+
+#--- Задача 7: Суммы четвертей ---
+n = int(input())
+matrix = []
+left =[]
+right = []
+down = []
+up = []
+
+for _ in range(n):
+    int_list = [int(i) for i in input().split()]
+    matrix.append(int_list)
+
+for i in range(n):
+    for j in range(n):
+        if i > j:
+            if i < n - 1 - j:
+                left.append(matrix[i][j])
+            elif i > n - 1 - j:
+                down.append(matrix[i][j])
+        elif i < j:
+            if i < n - 1 - j:
+                up.append(matrix[i][j])
+            elif i > n - 1 -j:
+                right.append(matrix[i][j])
+print(up, right, down, left)
+print("Верхняя четверть:", sum(up))
+print("Правая четверть:", sum(right))
+print("Нижняя четверть:", sum(down))
+print("Левая четверть:", sum(left))
